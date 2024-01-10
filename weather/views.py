@@ -1,3 +1,4 @@
+from decouple import config
 import requests
 import datetime
 from drf_spectacular.types import OpenApiTypes
@@ -38,7 +39,7 @@ class WeatherViewSet(viewsets.ViewSet):
                     params={
                         "q": city,
                         "units": "metric",
-                        "APPID": "161723404a43d1c2cac144340b51f3e5",
+                        "APPID": config("APPID"),
                     },
                 )
                 data = res.json()["list"][0]
